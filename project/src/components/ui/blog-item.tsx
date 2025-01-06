@@ -12,6 +12,7 @@ type Props = {
 
 export const BlogItem = ({ data }: Props) => { 
     const [liked, setLiked] = useState(false);
+    const [previewLiked, setPreviewLiked] = useState(false);
 
     const handleLikeButton = () => {
         setLiked(!liked);
@@ -23,11 +24,11 @@ export const BlogItem = ({ data }: Props) => {
                 <div className="text-[#E07B67]">{data.data}</div>
 
                 <FontAwesomeIcon 
-                    icon={liked === true ? faHeartFilled : faHeart}
+                    icon={liked || previewLiked === true ? faHeartFilled : faHeart}
                     className={`size-6 text-[#E07B67] transition-all ease-in-out duration-400 cursor-pointer`}
                     onClick={handleLikeButton}
-                    onMouseOver={() => setLiked(true)}   
-                    onMouseLeave={() => setLiked(false)}             
+                    onMouseOver={() => setPreviewLiked(true)}   
+                    onMouseLeave={() => setPreviewLiked(false)}             
                 />
             </div>
 
